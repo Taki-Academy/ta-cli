@@ -26,6 +26,9 @@ if (program.app_module) {
   }
   var moduleComponents = [
     'client/',
+    'client/js',
+    'client/img',
+    'client/css',
     'views/',
     'models/',
     'index.js',
