@@ -32,7 +32,8 @@ if (program.app_module) {
     'views/',
     'models/',
     'index.js',
-    'specs.md'
+    'specs.md',
+    'test.js'
   ];
   moduleComponents.forEach(component => {
     var componentPath = modulePath + component;
