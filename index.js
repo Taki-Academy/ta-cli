@@ -10,6 +10,9 @@ const path = require('path');
 program
   .version('0.0.1')
   .option('-M, --app_module [name]', 'Generate Fooll module [name]')
+  .option('-m, --model [name]', 'Generate sequelize model [name]')
+  .option('-a, --attributes [attributes]', 'Generate sequelize model [attributes]')
+  .option('-t, --to [moduleName]', 'Generate sequelize model [attributes]')
   .parse(process.argv);
 
 if (program.app_module) {
@@ -50,6 +53,16 @@ if (program.app_module) {
     }
   });
   console.log('Module %s generated', moduleName);
+}
+
+if (program.model && program.attributes && program.to) {
+  var modelPath = 'app_modules/' + program.to + '/models';
+  execSync(
+    'sequelize model:create --name ' + program.model +
+    ' --attributes ' + program.attributes +
+    ' --models-path ' + modelPath
+  );
+  console.log('Model created successfully!');
 }
 
 function getTemplate(component) {
